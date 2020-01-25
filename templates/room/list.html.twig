@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/room.css') }}">
+{% endblock %}
+{% block body %}
+    <div style="text-align: center">
+        <h1>Rooms list</h1>
+        <h5>Here you can choose room for reservation</h5>
+    </div>
+    <div class="rooms-container">
+        {% for post in posts %}
+            <div class="room-container">
+                <div class="room-element">
+                    Room
+                    <div>
+                        <label for="number">Number:</label>
+                        {{ post.number }}
+                    </div>
+                    <div>
+                        <label>Building:</label>
+                        {{ post.building }}
+                    </div>
+                    <div class="button-container">
+                        <a class="btn btn-info" href="{{ path('room.reserve',{id:post.id}) }}">Make reservation</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

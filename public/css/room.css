@@ -1,0 +1,28 @@
+.room-element{
+width:150px;
+height:150px;
+border-style: groove;
+}
+#number{
+    width:50px;
+}
+.rooms-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.room-container{
+    position:relative;
+    margin:10px;
+}
+.button-container{
+    position:absolute;
+    display:grid;
+    width:143px;
+    bottom:5px;
+}
+.margin-room{
+    margin:10px
+}
+.day-picker{
+    text-align: center;
+}

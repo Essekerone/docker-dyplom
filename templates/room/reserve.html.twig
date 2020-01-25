@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/room.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="day-picker">
+        <h1>Room {{ room.number }} : {{ room.building }}</h1>
+    </div>
+    <div class="day-picker">
+        <a href="{{ path('room.reserve',{id:room.id,date:day,operation:"minus"}) }}" > &#8592; </a>
+        {{ day }}
+        <a href="{{ path('room.reserve',{id:room.id,date:day,operation:"plus"}) }}" > &rarr; </a>
+    </div>
+    <div class="day-picker">
+      {% for time in times %}
+          <a class="btn btn-primary margin-room" href="{{ path('room.reserveRoom',{id:room.id,date:day,time:time}) }}" >{{ time }}</a>
+      {% endfor  %}
+    </div>
+    <div class="day-picker"><h5>Reservations</h5></div>
+    <div class="rooms-container">
+    {% for reservation in reservations %}
+        <div class="room-container">
+            <div class="room-element">
+                <b>Reservation</b>
+                <div>
+                    <label for="number">User:</label>
+                    {{ reservation.user }}
+                </div>
+                <div>
+                    <label>Time:</label>
+                    {{ reservation.time }}
+                </div>
+                <div class="button-container">
+                    <a class="btn btn-danger" href="{{ path('room.deleteReservation',{id:reservation.id}) }}">Delete</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
