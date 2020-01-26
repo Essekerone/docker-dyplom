@@ -9,7 +9,4 @@ RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 RUN docker-php-ext-install pdo pdo_mysql
 RUN service apache2 restart
-#ADD ./isubat-app /var/www/html
 WORKDIR /var/www/html
-#RUN composer require server ^4.4.2
-#RUN php bin/console server:run 0.0.0.0:8000

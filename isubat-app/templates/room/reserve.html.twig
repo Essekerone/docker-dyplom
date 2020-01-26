@@ -31,7 +31,7 @@
                     {{ reservation.time }}
                 </div>
                 <div class="button-container">
-                    <a class="btn btn-danger" href="{{ path('room.deleteReservation',{id:reservation.id}) }}">Delete</a>
+                    <a class="btn btn-danger" href="{{ path('room.deleteReservation',{id:room.id,reservationId:reservation.id}) }}">Delete</a>
                 </div>
             </div>
         </div>

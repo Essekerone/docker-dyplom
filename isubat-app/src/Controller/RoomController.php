@@ -112,17 +112,17 @@ class RoomController extends AbstractController
 
 
     /**
-     * @Route("/deleteReservation/{id}", name="deleteReservation")
+     * @Route("/deleteReservation/{id}/{reservationId?}", name="deleteReservation")
      */
-    public function deleteReservation($id, ReservationRepository $repository,RoomRepository $roomRepository)
+    public function deleteReservation($id, ReservationRepository $repository,RoomRepository $roomRepository,$reservationId)
     {
         $user = $this->getUser();
-
         if (!$user) {
             return $this->redirect('/login');
         }
         $room = $roomRepository->find($id);
-        $reserv = $repository->find($id);
+
+        $reserv = $repository->find($reservationId);
         $date = $reserv->getDate();
         if ($reserv) {
             $em = $this->getDoctrine()->getManager();
